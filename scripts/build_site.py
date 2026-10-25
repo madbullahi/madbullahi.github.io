@@ -61,6 +61,11 @@ def main(src_path, out_path):
 <meta property="og:description" content="{DESC}">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://madbullahi.github.io/">
+<meta property="og:image" content="https://madbullahi.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://madbullahi.github.io/og.png">
 <link rel="canonical" href="https://madbullahi.github.io/">
 <link rel="icon" href="{icon}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
