@@ -1,0 +1,15 @@
+# madbullahi.github.io
+
+Personal website of **Muhammad Abdullahi, PhD**, Alexander von Humboldt Research Fellow at Goethe University Frankfurt (ecotoxicology, bioremediation and *Daphnia*-based water treatment).
+
+Live at **https://madbullahi.github.io**
+
+## How this site is maintained
+
+- The main version of the site is hosted on Claude: https://claude.ai/artifact/4TKo2VvsTrtr93AnAwqn49. That's where new project-log posts are made and where the weekly update agent adds new publications and news.
+- `index.html` in this repository is a copy generated from that page by `scripts/build_site.py`. It is refreshed when the update agent runs, so **don't edit `index.html` by hand**; changes would be overwritten.
+- To rebuild manually: save the live page's HTML, then run
+
+  ```bash
+  python3 -I scripts/build_site.py saved-live-page.html index.html
+  ```
