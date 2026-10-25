@@ -2,9 +2,53 @@
 """Build the Humboldt landing page in two forms from template.html:
    artifact.html  - Claude-hosted page (the host adds the document skeleton)
    index.html     - full standalone document for madbullahi.github.io/humboldt/
-Usage: python3 -I build.py <template.html> <icons dir> <artifact out> <github out>
+Usage: python3 -I build.py <template.html> <icons dir> <artifact out> <github out> [<saved live site page>]
+The optional last argument is the main website's page (https://claude.ai/artifact/4TKo2VvsTrtr93AnAwqn49,
+saved with the Artifact tool); its site-data JSON fills the "Latest from the project" section.
 """
-import html, json, re, sys
+import datetime, html, json, re, sys
+
+MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+LOG_URL = "https://madbullahi.github.io/#humboldt"
+
+
+def fmt_date(d):
+    m = re.match(r"^(\d{4})-(\d{2})(?:-(\d{2}))?$", d or "")
+    if not m:
+        return html.escape(d or "")
+    return (f"{int(m.group(3))} " if m.group(3) else "") + f"{MONTHS[int(m.group(2)) - 1]} {m.group(1)}"
+
+
+def species(s):
+    return re.sub(r"\b(Daphnia magna|Daphnia)\b", r"<i>\1</i>", html.escape(s))
+
+
+def latest_html(site_path, icon):
+    if not site_path:
+        entries = []
+    else:
+        live = open(site_path, encoding="utf-8").read()
+        m = re.search(r'<script type="application/json" id="site-data">\s*(.*?)\s*</script>', live, re.S)
+        if not m:
+            sys.exit("build: no site-data JSON in the live page")
+        entries = json.loads(m.group(1)).get("log", [])
+    entries = sorted(entries, key=lambda e: str(e.get("date", "")), reverse=True)[:3]
+    if not entries:
+        return ('<div class="updates-empty reveal"><h3>First results are on their way</h3>'
+                f'<p>Experiments, protocols and results will appear here as they are posted to the project log.</p>'
+                f'<a class="btn btn-ghost btn-sm" href="{LOG_URL}" target="_top">Open the project log</a></div>')
+    items = []
+    for e in entries:
+        text = str(e.get("text", "")).strip().split("\n\n")[0]
+        if len(text) > 240:
+            text = text[:240].rsplit(" ", 1)[0] + "…"
+        link = e.get("link") if re.match(r"^https?://", str(e.get("link", ""))) else ""
+        more = (f'<a class="more" href="{html.escape(link)}" target="_blank" rel="noopener">{html.escape(e.get("linkLabel") or "Read more")} {icon("arrow-up-right")}</a>'
+                if link else f'<a class="more" href="{LOG_URL}" target="_top">Read on the project log {icon("arrow-up-right")}</a>')
+        items.append(f'<li class="reveal"><span class="head">{html.escape(str(e.get("type", "Update")))} · {fmt_date(e.get("date"))}</span>'
+                     f'<h3>{species(str(e.get("title", "")))}</h3>' + (f'<p>{species(text)}</p>' if text else "") + more + '</li>')
+    cls = "updates one" if len(items) == 1 else "updates"
+    return f'<ul class="{cls}">' + "".join(items) + "</ul>"
 
 FAQ = [
     ("What is the aim of the project?",
@@ -35,15 +79,18 @@ ICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0
         "%3Ctext x='16' y='21' font-family='Arial,sans-serif' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3EMA%3C/text%3E%3C/svg%3E")
 
 
-def main(tpl_path, icons, art_out, gh_out):
+def main(tpl_path, icons, art_out, gh_out, site_path=None):
     tpl = open(tpl_path, encoding="utf-8").read()
 
-    def icon(m):
-        svg = open(f"{icons}/{m.group(1)}.svg", encoding="utf-8").read().strip()
-        return svg.replace("<svg ", '<svg class="ico" aria-hidden="true" focusable="false" ', 1)
-    tpl = re.sub(r"\{\{icon:([a-z-]+)\}\}", icon, tpl)
+    def svg(name):
+        s = open(f"{icons}/{name}.svg", encoding="utf-8").read().strip()
+        return s.replace("<svg ", '<svg class="ico" aria-hidden="true" focusable="false" ', 1)
+    tpl = re.sub(r"\{\{icon:([a-z-]+)\}\}", lambda m: svg(m.group(1)), tpl)
+    tpl = tpl.replace("{{latest}}", latest_html(site_path, svg))
+    t = datetime.date.today()
+    tpl = tpl.replace("{{refreshed}}", f"{t.day} {MONTHS[t.month - 1]} {t.year}")
 
-    caret = icon(re.match(r"(.*)", "caret-down"))
+    caret = svg("caret-down")
     faq_html = "\n        ".join(
         f'<details class="reveal"><summary><span>{q}</span>{caret}</summary><div class="a"><p>{a}</p></div></details>' for q, a in FAQ)
     tpl = tpl.replace("{{faq}}", faq_html)
@@ -91,4 +138,6 @@ def main(tpl_path, icons, art_out, gh_out):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:5])
+    if len(sys.argv) not in (5, 6):
+        sys.exit(__doc__)
+    main(*sys.argv[1:6])

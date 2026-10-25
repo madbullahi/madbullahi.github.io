@@ -148,6 +148,8 @@ h3 { font-size: var(--s-md); font-weight: 600; margin: 0; line-height: 1.4; }
 .proj-intro { max-width: 66ch; margin: 0 0 24px; }
 .proj-intro p { margin: 0 0 10px; }
 .proj-meta { font-family: var(--mono); font-size: var(--s-xs); color: var(--muted); margin: 0 0 28px; }
+.proj-page { margin: -12px 0 28px; }
+.proj-page:empty { display: none; }
 .toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip {
@@ -304,6 +306,7 @@ footer .mono { font-family: var(--mono); }
       <h2 id="proj-title"></h2>
       <div class="proj-intro" id="proj-intro"></div>
       <p class="proj-meta" id="proj-meta"></p>
+      <p class="proj-page" id="proj-page"></p>
       <div class="toolbar">
         <div class="chips" id="chips" role="group" aria-label="Filter updates"></div>
       </div>
@@ -432,7 +435,11 @@ footer .mono { font-family: var(--mono); }
    "My Humboldt Fellowship takes a Daphnia-based water treatment technology, already demonstrated in a commercial setting, and develops it to also remove bacterial and viral pathogens from reclaimed water, with particular attention to antimicrobial resistance.",
    "The aim is a treatment step that stays low in cost and carbon, so it can serve the developing economies most affected by water scarcity and inadequate sanitation. This log records the project as it runs: experiments, protocols, results and milestones."
   ],
-  "meta": "Alexander von Humboldt Foundation · Goethe University Frankfurt · from January 2026"
+  "meta": "Alexander von Humboldt Foundation · Goethe University Frankfurt · from January 2026",
+  "page": {
+   "label": "Visit the Humboldt project page",
+   "url": "https://madbullahi.github.io/humboldt/"
+  }
  },
  "log": [
   {
@@ -743,6 +750,7 @@ footer .mono { font-family: var(--mono); }
   $('proj-title').innerHTML = italSp(P.title || 'Humboldt project');
   $('proj-intro').innerHTML = (P.intro || []).map(p => `<p>${italSp(p)}</p>`).join('');
   $('proj-meta').textContent = P.meta || '';
+  if (P.page && safeUrl(P.page.url)) $('proj-page').innerHTML = `<a class="btn small" href="${esc(P.page.url)}" target="_blank" rel="noopener">${esc(P.page.label || 'Project page')} ↗</a>`;
 
   let filter = 'All', showAll = false, canWrite = false, assets = null, artifact = null, confirmId = null;
   const SHOW = 6;
