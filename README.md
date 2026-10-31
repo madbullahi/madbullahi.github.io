@@ -18,6 +18,7 @@ Live at **https://madbullahi.github.io**
 
 - Live at **https://madbullahi.github.io/humboldt/** (also published as a Claude page).
 - Built with the `landing-page-design` skill in `.claude/skills/` (from elayadesign/ai-design-skills, MIT). Agreed exceptions to the skill: species names stay in italics, and scientific terms may keep their hyphens.
+- **Visual identity matches the main website** (since 2026-10-31): the main site's "clear water" palette, Spectral headings, IBM Plex Sans/Mono, and section labels in a left margin column. This replaced the skill's default look (Manrope, black buttons, gradient headline, icon tiles) after an [Impeccable](https://github.com/pbakaus/impeccable) design review. Keep new sections in this style.
 - Source: `scripts/landing/template.html` and `scripts/landing/build.py` (icons from Phosphor, MIT). Rebuild with
 
   ```bash

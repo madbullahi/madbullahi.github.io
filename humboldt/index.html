@@ -18,46 +18,49 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A0A0A'/%3E%3Ctext x='16' y='21' font-family='Arial,sans-serif' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3EMA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,500;1,300&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the aim of the project?", "acceptedAnswer": {"@type": "Answer", "text": "To find out how well a treatment step built on Daphnia removes bacterial and viral pathogens from reclaimed water, alongside the chemicals it already removes, while keeping that step low in cost and carbon."}}, {"@type": "Question", "name": "Who funds it, and where is it based?", "acceptedAnswer": {"@type": "Answer", "text": "The Alexander von Humboldt Foundation funds it through a Research Fellowship for Postdocs hosted at Goethe University Frankfurt. Muhammad is currently on a research visit at the University of Birmingham."}}, {"@type": "Question", "name": "Why use Daphnia?", "acceptedAnswer": {"@type": "Answer", "text": "Daphnia are small freshwater crustaceans that feed by filtering the water around them. They are among the best studied animals in ecotoxicology, so their responses to pollutants are well understood."}}, {"@type": "Question", "name": "Has the approach worked outside the lab?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, for chemicals. A four week mesocosm trial in real wastewater removed pharmaceuticals, and the technology has since moved to commercial demonstration through Daphne Water Solutions."}}, {"@type": "Question", "name": "Does it remove pathogens yet?", "acceptedAnswer": {"@type": "Answer", "text": "That is the question this project answers. Results will be shared through publications and on the project log as they come in."}}, {"@type": "Question", "name": "Who should get in touch?", "acceptedAnswer": {"@type": "Answer", "text": "Water utilities and treatment plant operators, microbiologists and virologists, funders, and researchers working on water reuse or antimicrobial resistance."}}, {"@type": "Question", "name": "What could a collaboration look like?", "acceptedAnswer": {"@type": "Answer", "text": "Joint funding applications, an exchange of samples or data, a pilot trial at a treatment site, or shared analysis of pathogen and resistance data."}}, {"@type": "Question", "name": "Where can I follow progress?", "acceptedAnswer": {"@type": "Answer", "text": "On the project log and the publication list at madbullahi.github.io."}}]}</script>
 </head>
 <body>
 <style>
-/* Layout: classic hero plus sections (skill layout A). One centred column, max 1120px; hero splits text and a drawn water flea. Values follow the landing-page-design skill: Tailwind type scale, spacing tokens, Tailwind radii, flat backgrounds. */
+/* Layout: hero plus sections in one centred column, max 1120px; hero splits text and a drawn water flea.
+   Visual identity matches the main website (madbullahi.github.io): "clear water" palette, Spectral headings,
+   IBM Plex Sans body, IBM Plex Mono labels, pond-teal accent, flat surfaces and modest radii. */
 :root {
-  --bg: #FFFFFF;
-  --surface: #F5F5F4;
-  --card: #FFFFFF;
-  --ink: #0A0A0A;
-  --muted: #5C5C5C;
-  --faint: #8A8A8A;
-  --line: #E4E4E3;
-  --accent: #1C6B66;
-  --btn-bg: #0A0A0A;
-  --btn-fg: #FFFFFF;
-  --glass: rgba(255, 255, 255, .8);
-  --hero-from: #000000;
-  --hero-to: #666666;
-  --font: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bg: #F3F7F6;          /* clear water (same as the main website) */
+  --surface: #E6EEEC;     /* pond glass */
+  --card: #F3F7F6;
+  --ink: #0F2829;         /* deep water */
+  --muted: #4C6563;       /* 5.6:1 on --bg */
+  --faint: #4C6563;       /* small print uses the muted ink so it stays readable */
+  --line: #C9D8D5;
+  --accent: #1C6B66;      /* pond teal */
+  --btn-bg: #1C6B66;
+  --btn-fg: #F3F7F6;
+  --glass: color-mix(in srgb, #F3F7F6 92%, transparent);
+  --font: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "Spectral", "Iowan Old Style", Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --ease: cubic-bezier(0.32, 0.72, 0, 1);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #131209; --surface: #1F1F1F; --card: #181818; --ink: #F5F5F5; --muted: #A8A8A8; --faint: #7A7A7A; --line: #313131;
-    --accent: #6EC3B8; --btn-bg: #F5F5F5; --btn-fg: #0A0A0A; --glass: rgba(0, 0, 0, .8); --hero-from: #FFFFFF; --hero-to: #9B9B9B; color-scheme: dark;
+    --bg: #0B1819; --surface: #132526; --card: #0F2021; --ink: #E2ECEA; --muted: #98B0AD; --faint: #98B0AD; --line: #24393A;
+    --accent: #6EC3B8; --btn-bg: #6EC3B8; --btn-fg: #0B1819; --glass: color-mix(in srgb, #0B1819 92%, transparent); color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #131209; --surface: #1F1F1F; --card: #181818; --ink: #F5F5F5; --muted: #A8A8A8; --faint: #7A7A7A; --line: #313131;
-  --accent: #6EC3B8; --btn-bg: #F5F5F5; --btn-fg: #0A0A0A; --glass: rgba(0, 0, 0, .8); --hero-from: #FFFFFF; --hero-to: #9B9B9B; color-scheme: dark;
+  --bg: #0B1819; --surface: #132526; --card: #0F2021; --ink: #E2ECEA; --muted: #98B0AD; --faint: #98B0AD; --line: #24393A;
+  --accent: #6EC3B8; --btn-bg: #6EC3B8; --btn-fg: #0B1819; --glass: color-mix(in srgb, #0B1819 92%, transparent); color-scheme: dark;
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 1rem; line-height: 1.5rem; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: 1ms !important; } }
 h1, h2, h3 { text-wrap: balance; margin: 0; font-weight: 600; }
+h1, h2 { font-family: var(--display); font-weight: 300; }
 p, li, dd { text-wrap: pretty; }
 p { margin: 0; }
 a { color: inherit; }
@@ -75,20 +78,18 @@ i { font-style: italic; } /* species names only (agreed exception to the skill's
   transition: all 700ms var(--ease);
 }
 .btn-primary { background: var(--btn-bg); color: var(--btn-fg); }
-.btn-primary:hover { transform: translateY(-2px); }
+.btn-primary:hover { filter: brightness(1.08); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
-.btn-ghost:hover { background: var(--surface); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 .btn:active { transform: scale(0.98); }
 .btn-sm { font-size: .875rem; line-height: 1.25rem; }
 
 /* ---------- fluid island nav ---------- */
-.nav-shell { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; justify-content: center; pointer-events: none; padding-top: env(safe-area-inset-top, 0px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.nav-shell { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; justify-content: center; pointer-events: none; background: var(--glass); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .island {
-  pointer-events: auto; margin-top: 24px; width: max-content; max-width: 100%; display: flex; align-items: center; gap: 12px;
-  padding: 8px 8px 8px 16px; border-radius: 9999px; background: var(--glass); border: 1px solid var(--line);
-  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  pointer-events: auto; width: 100%; max-width: 1088px; display: flex; align-items: center; gap: 12px; padding-block: 8px; /* 1120px wrap minus its 16px gutters, so the name lines up with the content */
 }
-.brand { font-size: .875rem; line-height: 1.25rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.brand { font-family: var(--display); font-size: 1.125rem; line-height: 1.5rem; font-weight: 500; text-decoration: none; white-space: nowrap; margin-right: auto; }
 .burger { position: relative; width: 40px; height: 40px; border-radius: 9999px; border: 0; background: transparent; color: var(--ink); cursor: pointer; transition: background 700ms var(--ease); }
 .burger:hover { background: var(--surface); }
 .burger span { position: absolute; left: 12px; width: 16px; height: 2px; border-radius: 2px; background: currentColor; transition: all 700ms var(--ease); }
@@ -104,7 +105,7 @@ i { font-style: italic; } /* species names only (agreed exception to the skill's
 .menu-open .overlay { opacity: 1; visibility: visible; }
 .overlay ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; text-align: center; }
 .overlay li { overflow: hidden; }
-.overlay a { display: inline-flex; align-items: center; gap: 8px; font-size: 1.875rem; line-height: 2.25rem; font-weight: 600; text-decoration: none; padding: 4px 8px; border-radius: 12px;
+.overlay a { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-size: 1.875rem; line-height: 2.25rem; font-weight: 300; text-decoration: none; padding: 4px 8px; border-radius: 12px;
   transform: translateY(48px); opacity: 0; transition: all 700ms var(--ease); }
 .overlay a:hover { color: var(--accent); }
 .menu-open .overlay a { transform: translateY(0); opacity: 1; }
@@ -117,20 +118,19 @@ i { font-style: italic; } /* species names only (agreed exception to the skill's
 @media (max-width: 420px) { .island .btn-sm { display: none; } }
 
 /* ---------- hero ---------- */
-.hero { padding-top: 160px; padding-bottom: 96px; }
+.hero { padding-top: 136px; padding-bottom: 88px; }
 .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); gap: 64px; align-items: center; }
-.eyebrow { font-size: .875rem; line-height: 1.25rem; font-weight: 600; color: var(--muted); margin-bottom: 24px; }
+.eyebrow { font-family: var(--mono); font-size: .8125rem; line-height: 1.25rem; letter-spacing: .04em; color: var(--accent); margin-bottom: 20px; }
 .hero h1 {
-  max-width: 680px; font-size: 3rem; line-height: 1; letter-spacing: -.02em;
-  background: linear-gradient(90deg, var(--hero-from), var(--hero-to)); -webkit-background-clip: text; background-clip: text; color: transparent;
+  max-width: 680px; font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: 1.05; letter-spacing: -.015em; color: var(--ink);
 }
 .hero .sub { max-width: 680px; margin-top: 24px; font-size: 1.25rem; line-height: 1.75rem; color: var(--muted); }
 .hero .actions { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 .proof { margin-top: 32px; display: flex; gap: 8px; align-items: flex-start; font-size: .875rem; line-height: 1.25rem; color: var(--muted); max-width: 560px; }
 .proof .ico { color: var(--accent); width: 1.25rem; height: 1.25rem; margin-top: 0; }
-.tank { margin: 0; position: relative; aspect-ratio: 1 / 1; width: 100%; max-width: 100%; border-radius: 24px; background: var(--surface); border: 1px solid var(--line); overflow: hidden; }
+.tank { margin: 0; position: relative; aspect-ratio: 1 / 1; width: 100%; max-width: 100%; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); overflow: hidden; }
 .tank canvas { width: 100%; height: 100%; display: block; }
-.tank figcaption { position: absolute; left: 16px; bottom: 12px; font-size: .75rem; line-height: 1rem; color: var(--faint); }
+.tank figcaption { position: absolute; left: 12px; bottom: 12px; font-family: var(--mono); font-size: .75rem; line-height: 1rem; color: var(--muted); background: var(--surface); padding: 2px 6px; border-radius: 4px; }
 @media (max-width: 900px) {
   .hero { padding-top: 128px; padding-bottom: 64px; }
   .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: 48px; }
@@ -141,40 +141,47 @@ i { font-style: italic; } /* species names only (agreed exception to the skill's
 }
 
 /* ---------- sections ---------- */
-section { padding-top: 96px; padding-bottom: 96px; scroll-margin-top: 96px; }
+section { padding-top: 96px; padding-bottom: 96px; scroll-margin-top: 96px; border-top: 1px solid var(--line); }
 @media (max-width: 900px) { section { padding-top: 64px; padding-bottom: 64px; } }
-.kicker { font-size: .875rem; line-height: 1.25rem; font-weight: 600; color: var(--accent); margin-bottom: 12px; }
-h2 { font-size: 2.25rem; line-height: 2.5rem; letter-spacing: -.01em; max-width: 680px; }
+.kicker { font-family: var(--mono); font-size: .8125rem; line-height: 1.25rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0; }
+/* As on the main website: section labels sit in a left margin column beside the content, not above the heading. */
+section .wrap:has(> .kicker) { display: grid; grid-template-columns: 180px minmax(0, 1fr); column-gap: 40px; align-items: start; }
+section .wrap:has(> .kicker) > * { grid-column: 2; }
+section .wrap:has(> .kicker) > .kicker { grid-column: 1; grid-row: 1 / span 6; padding-top: 10px; position: sticky; top: 88px; }
+@media (max-width: 900px) {
+  section .wrap:has(> .kicker) { display: block; }
+  section .wrap:has(> .kicker) > .kicker { position: static; padding-top: 0; margin-bottom: 12px; }
+}
+h2 { font-size: 2.25rem; line-height: 2.6rem; letter-spacing: -.01em; max-width: 680px; }
 @media (max-width: 900px) { h2 { font-size: 1.875rem; line-height: 2.25rem; } }
-.lede { margin-top: 16px; font-size: 1.125rem; line-height: 1.75rem; color: var(--muted); max-width: 680px; }
+.lede { margin-top: 16px; font-size: 1.125rem; line-height: 1.75rem; color: var(--muted); max-width: 60ch; }
 
 .duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 48px; }
-.panel { border: 1px solid var(--line); border-radius: 24px; padding: 32px; background: var(--card); display: grid; gap: 12px; align-content: start; }
+.panel { border: 1px solid var(--line); border-radius: 10px; padding: 28px; background: var(--card); display: grid; gap: 12px; align-content: start; }
 .panel.alt { background: var(--surface); }
-.panel h3 { font-size: 1.5rem; line-height: 2rem; }
+.panel h3 { font-size: 1.375rem; line-height: 1.9rem; }
 .panel p { color: var(--muted); font-size: 1rem; line-height: 1.5rem; }
-.tag { justify-self: start; font-size: .75rem; line-height: 1rem; font-weight: 600; padding: 4px 8px; border-radius: 9999px; border: 1px solid var(--line); color: var(--muted); }
+.tag { justify-self: start; font-family: var(--mono); font-size: .75rem; line-height: 1rem; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); }
 @media (max-width: 760px) { .duo { grid-template-columns: minmax(0, 1fr); } .panel { padding: 24px; } }
 
 /* benefits */
-.benefits { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 24px; }
-.benefits li { grid-column: span 2; border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; gap: 12px; align-content: start; background: var(--card); }
+.benefits { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 32px 36px; }
+.benefits li { grid-column: span 2; border-top: 2px solid var(--accent); padding-top: 14px; display: grid; gap: 8px; align-content: start; }
 .benefits li:nth-child(4), .benefits li:nth-child(5) { grid-column: span 3; }
-.benefits .badge { width: 40px; height: 40px; border-radius: 12px; background: var(--surface); display: grid; place-items: center; color: var(--accent); }
 .benefits h3 { font-size: 1.125rem; line-height: 1.75rem; }
 .benefits p { color: var(--muted); font-size: 1rem; line-height: 1.5rem; }
 @media (max-width: 900px) { .benefits { grid-template-columns: minmax(0, 1fr); } .benefits li, .benefits li:nth-child(4), .benefits li:nth-child(5) { grid-column: auto; } }
 
 /* tagline reveal */
 .tagline { padding-top: 96px; padding-bottom: 96px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
-.tagline p { max-width: 880px; font-size: 3.75rem; line-height: 1; font-weight: 600; letter-spacing: -.02em; text-wrap: balance; }
-.tagline .w { color: color-mix(in srgb, var(--ink) 28%, transparent); transition: color 700ms var(--ease); }
+.tagline p { max-width: 880px; font-family: var(--display); font-size: 3.25rem; line-height: 1.1; font-weight: 300; letter-spacing: -.015em; text-wrap: balance; }
+.tagline .w { color: var(--muted); transition: color 700ms var(--ease); }
 .tagline .w.on { color: var(--ink); }
 @media (max-width: 900px) { .tagline p { font-size: 2.25rem; line-height: 2.5rem; } }
 
 /* steps */
 .steps { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; counter-reset: step; }
-.steps li { counter-increment: step; border-radius: 16px; border: 1px solid var(--line); padding: 24px; display: grid; gap: 12px; align-content: start; }
+.steps li { counter-increment: step; border-radius: 10px; border: 1px solid var(--line); padding: 24px; display: grid; gap: 12px; align-content: start; }
 .steps li::before { content: counter(step); width: 32px; height: 32px; border-radius: 9999px; background: var(--btn-bg); color: var(--btn-fg); display: grid; place-items: center; font-size: .875rem; line-height: 1.25rem; font-weight: 600; }
 .steps h3 { font-size: 1.125rem; line-height: 1.75rem; }
 .steps p { color: var(--muted); }
@@ -182,9 +189,9 @@ h2 { font-size: 2.25rem; line-height: 2.5rem; letter-spacing: -.01em; max-width:
 
 /* evidence */
 .proofs { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.proofs li { border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; gap: 8px; align-content: start; background: var(--card); }
+.proofs li { border: 1px solid var(--line); border-radius: 10px; padding: 24px; display: grid; gap: 8px; align-content: start; background: var(--card); }
 .proofs .head { display: flex; align-items: center; gap: 8px; color: var(--accent); font-size: .875rem; line-height: 1.25rem; font-weight: 600; }
-.proofs .big { font-size: 1.5rem; line-height: 2rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.proofs .big { font-family: var(--display); font-size: 1.625rem; line-height: 2rem; font-weight: 500; font-variant-numeric: tabular-nums; }
 .proofs p { color: var(--muted); }
 .proofs a.more { display: inline-flex; align-items: center; gap: 4px; margin-top: 4px; font-size: .875rem; line-height: 1.25rem; font-weight: 600; text-decoration: none; color: var(--ink); border-radius: 8px; justify-self: start; transition: all 700ms var(--ease); }
 .proofs a.more:hover { color: var(--accent); transform: translateX(2px); }
@@ -193,7 +200,7 @@ h2 { font-size: 2.25rem; line-height: 2.5rem; letter-spacing: -.01em; max-width:
 
 /* latest updates */
 .updates { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.updates li { border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; gap: 8px; align-content: start; background: var(--card); }
+.updates li { border: 1px solid var(--line); border-radius: 10px; padding: 24px; display: grid; gap: 8px; align-content: start; background: var(--card); }
 .updates .head { display: flex; align-items: center; gap: 8px; color: var(--accent); font-size: .875rem; line-height: 1.25rem; font-weight: 600; }
 .updates h3 { font-size: 1.125rem; line-height: 1.75rem; }
 .updates p { color: var(--muted); }
@@ -201,15 +208,15 @@ h2 { font-size: 2.25rem; line-height: 2.5rem; letter-spacing: -.01em; max-width:
 .updates a.more:hover { color: var(--accent); transform: translateX(2px); }
 .updates a.more .ico { width: 1rem; height: 1rem; }
 .updates.one { grid-template-columns: minmax(0, 680px); }
-.updates-empty { margin-top: 48px; border: 1px solid var(--line); border-radius: 16px; padding: 32px; background: var(--surface); max-width: 680px; display: grid; gap: 12px; }
+.updates-empty { margin-top: 48px; border: 1px solid var(--line); border-radius: 10px; padding: 32px; background: var(--surface); max-width: 680px; display: grid; gap: 12px; }
 .updates-empty p { color: var(--muted); }
 @media (max-width: 900px) { .updates { grid-template-columns: minmax(0, 1fr); } }
 
 /* faq */
 .faq { margin-top: 48px; display: grid; gap: 12px; max-width: 800px; }
-.faq details { border: 1px solid var(--line); border-radius: 16px; background: var(--card); transition: background 700ms var(--ease); }
+.faq details { border: 1px solid var(--line); border-radius: 10px; background: var(--card); transition: background 700ms var(--ease); }
 .faq details[open] { background: var(--surface); }
-.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 24px; font-size: 1.125rem; line-height: 1.75rem; font-weight: 600; border-radius: 16px; }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 24px; font-size: 1.125rem; line-height: 1.75rem; font-weight: 600; border-radius: 10px; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary .ico { transition: transform 700ms var(--ease); color: var(--muted); }
 .faq details[open] summary .ico { transform: rotate(180deg); }
@@ -218,7 +225,7 @@ h2 { font-size: 2.25rem; line-height: 2.5rem; letter-spacing: -.01em; max-width:
 
 /* final cta */
 .final { text-align: left; }
-.final .box { border-radius: 24px; background: var(--surface); border: 1px solid var(--line); padding: 64px; display: grid; gap: 24px; }
+.final .box { border-radius: 10px; background: var(--surface); border: 1px solid var(--line); padding: 64px; display: grid; gap: 24px; }
 .final .reassure { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: 1rem; line-height: 1.5rem; }
 .final .reassure .ico { color: var(--accent); }
 .final .row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
@@ -231,7 +238,7 @@ footer .wrap { display: grid; gap: 24px; }
 footer .links { display: flex; flex-wrap: wrap; gap: 16px 24px; font-size: .875rem; line-height: 1.25rem; }
 footer .links a { text-decoration: none; color: var(--muted); transition: color 700ms var(--ease); }
 footer .links a:hover { color: var(--ink); }
-footer .small { font-size: .75rem; line-height: 1rem; color: var(--faint); max-width: 680px; }
+footer .small { font-size: .8125rem; line-height: 1.25rem; color: var(--faint); max-width: 58ch; }
 #privacy { scroll-margin-top: 96px; }
 
 /* scroll reveal (only applied to elements that start below the fold) */
@@ -305,11 +312,11 @@ footer .small { font-size: .75rem; line-height: 1rem; color: var(--faint); max-w
       <p class="kicker reveal">Benefits</p>
       <h2 class="reveal">What this treatment step offers</h2>
       <ul class="benefits">
-        <li class="reveal"><span class="badge"><svg class="ico" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M223.45,40.07a8,8,0,0,0-7.52-7.52C139.8,28.08,78.82,51,52.82,94a87.09,87.09,0,0,0-12.76,49c.57,15.92,5.21,32,13.79,47.85l-19.51,19.5a8,8,0,0,0,11.32,11.32l19.5-19.51C81,210.73,97.09,215.37,113,215.94q1.67.06,3.33.06A86.93,86.93,0,0,0,162,203.18C205,177.18,227.93,116.21,223.45,40.07ZM153.75,189.5c-22.75,13.78-49.68,14-76.71.77l88.63-88.62a8,8,0,0,0-11.32-11.32L65.73,179c-13.19-27-13-54,.77-76.71,22.09-36.47,74.6-56.44,141.31-54.06C210.2,114.89,190.22,167.41,153.75,189.5Z"/></svg></span><h3>Low cost and low carbon</h3><p>Living organisms do the filtering, so the step needs little energy, no added chemicals, and leaves no harmful byproducts.</p></li>
-        <li class="reveal"><span class="badge"><svg class="ico" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M221.69,199.77,160,96.92V40h8a8,8,0,0,0,0-16H88a8,8,0,0,0,0,16h8V96.92L34.31,199.77A16,16,0,0,0,48,224H208a16,16,0,0,0,13.72-24.23ZM110.86,103.25A7.93,7.93,0,0,0,112,99.14V40h32V99.14a7.93,7.93,0,0,0,1.14,4.11L183.36,167c-12,2.37-29.07,1.37-51.75-10.11-15.91-8.05-31.05-12.32-45.22-12.81ZM48,208l28.54-47.58c14.25-1.74,30.31,1.85,47.82,10.72,19,9.61,35,12.88,48,12.88a69.89,69.89,0,0,0,19.55-2.7L208,208Z"/></svg></span><h3>Tested in real wastewater</h3><p>A four week mesocosm trial removed pharmaceuticals from real wastewater, published in <a href="https://doi.org/10.1016/j.scitotenv.2023.167224" target="_blank" rel="noopener">Science of the Total Environment</a> in 2023.</p></li>
-        <li class="reveal"><span class="badge"><svg class="ico" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M237.66,86.34l-60-60a8,8,0,0,0-11.32,0L37.11,155.57a44.77,44.77,0,0,0,63.32,63.32L212.32,107l22.21-7.4a8,8,0,0,0,3.13-13.25ZM89.11,207.57a28.77,28.77,0,0,1-40.68-40.68l28.8-28.8c8.47-2.9,21.75-4,39.07,5,10.6,5.54,20.18,8,28.56,8.73ZM205.47,92.41a8,8,0,0,0-3.13,1.93l-39.57,39.57c-8.47,2.9-21.75,4-39.07-5-10.6-5.54-20.18-8-28.56-8.73L172,43.31,217.19,88.5Z"/></svg></span><h3>Built on 300+ experiments</h3><p>More than 300 controlled exposure experiments across five classes of chemical pollutant sit behind the method.</p></li>
-        <li class="reveal"><span class="badge"><svg class="ico" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M136,108a28,28,0,1,0-28,28A28,28,0,0,0,136,108Zm-28,12a12,12,0,1,1,12-12A12,12,0,0,1,108,120Zm68-8a16,16,0,1,1-16,16A16,16,0,0,1,176,112Zm-32,64a16,16,0,1,1-16-16A16,16,0,0,1,144,176Zm96-56H223.66a95.52,95.52,0,0,0-22.39-53.95l12.39-12.39a8,8,0,0,0-11.32-11.32L190,54.73A95.52,95.52,0,0,0,136,32.34V16a8,8,0,0,0-16,0V32.34A95.52,95.52,0,0,0,66.05,54.73L53.66,42.34A8,8,0,0,0,42.34,53.66L54.73,66.05a95.52,95.52,0,0,0-22.39,54H16a8,8,0,0,0,0,16H32.34A95.52,95.52,0,0,0,54.73,190L42.34,202.34a8,8,0,0,0,11.32,11.32l12.39-12.39a95.52,95.52,0,0,0,54,22.39V240a8,8,0,0,0,16,0V223.66A95.52,95.52,0,0,0,190,201.27l12.39,12.39a8,8,0,0,0,11.32-11.32L201.27,190A95.52,95.52,0,0,0,223.66,136H240a8,8,0,0,0,0-16ZM128,208a80,80,0,1,1,80-80A80.09,80.09,0,0,1,128,208Z"/></svg></span><h3>Focused on pathogens and resistance</h3><p>The project tracks bacterial and viral pathogens and antimicrobial resistance, not chemicals alone.</p></li>
-        <li class="reveal"><span class="badge"><svg class="ico" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm88,104a87.61,87.61,0,0,1-3.33,24H174.16a157.44,157.44,0,0,0,0-48h38.51A87.61,87.61,0,0,1,216,128ZM102,168H154a115.11,115.11,0,0,1-26,45A115.27,115.27,0,0,1,102,168Zm-3.9-16a140.84,140.84,0,0,1,0-48h59.88a140.84,140.84,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.84a157.44,157.44,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154,88H102a115.11,115.11,0,0,1,26-45A115.27,115.27,0,0,1,154,88Zm52.33,0H170.71a135.28,135.28,0,0,0-22.3-45.6A88.29,88.29,0,0,1,206.37,88ZM107.59,42.4A135.28,135.28,0,0,0,85.29,88H49.63A88.29,88.29,0,0,1,107.59,42.4ZM49.63,168H85.29a135.28,135.28,0,0,0,22.3,45.6A88.29,88.29,0,0,1,49.63,168Zm98.78,45.6a135.28,135.28,0,0,0,22.3-45.6h35.66A88.29,88.29,0,0,1,148.41,213.6Z"/></svg></span><h3>Designed for places short of water</h3><p>Kept low cost and low tech, so it can serve developing economies where water is scarce and sanitation is limited.</p></li>
+        <li class="reveal"><h3>Low cost and low carbon</h3><p>Living organisms do the filtering, so the step needs little energy, no added chemicals, and leaves no harmful byproducts.</p></li>
+        <li class="reveal"><h3>Tested in real wastewater</h3><p>A four week mesocosm trial removed pharmaceuticals from real wastewater, published in <a href="https://doi.org/10.1016/j.scitotenv.2023.167224" target="_blank" rel="noopener">Science of the Total Environment</a> in 2023.</p></li>
+        <li class="reveal"><h3>Built on 300+ experiments</h3><p>More than 300 controlled exposure experiments across five classes of chemical pollutant sit behind the method.</p></li>
+        <li class="reveal"><h3>Focused on pathogens and resistance</h3><p>The project tracks bacterial and viral pathogens and antimicrobial resistance, not chemicals alone.</p></li>
+        <li class="reveal"><h3>Designed for places short of water</h3><p>Kept low cost and low tech, so it can serve developing economies where water is scarce and sanitation is limited.</p></li>
       </ul>
     </div>
   </section>
