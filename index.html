@@ -265,6 +265,18 @@ p, li { text-wrap: pretty; }
 .contact-row .k { font-family: var(--mono); font-size: var(--s-xs); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); width: 96px; }
 .addr { font-family: var(--mono); font-size: var(--s-sm); user-select: all; word-break: break-all; }
 
+/* impact timeline: a vertical line of milestones */
+.steps { list-style: none; margin: 0; padding: 0 0 0 22px; border-left: 2px solid var(--rule); max-width: 66ch; }
+.steps li { position: relative; padding: 0 0 24px; }
+.steps li:last-child { padding-bottom: 0; }
+.steps li::before { content: ""; position: absolute; left: -29px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.steps li.current::before { background: var(--accent); }
+.steps .when { display: block; margin-bottom: 2px; }
+.steps p { margin: 4px 0 0; color: var(--muted); font-size: var(--s-sm); }
+/* plain-language summary under a paper */
+.pub .plain { font-size: var(--s-sm); margin: 10px 0 0; padding: 10px 14px; border-left: 3px solid var(--amber); background: var(--surface); border-radius: 0 8px 8px 0; max-width: 62ch; }
+.pub .plain b { font-weight: 600; color: var(--ink); }
+
 /* reading picks: reuses .rows; a quiet source line under each pick */
 .reading-intro { color: var(--muted); font-size: var(--s-sm); max-width: 60ch; margin: -8px 0 24px; }
 .reading .src { font-family: var(--mono); font-size: var(--s-xs); color: var(--muted); margin-top: 6px; }
@@ -282,7 +294,7 @@ footer .mono { font-family: var(--mono); }
   <div class="wrap">
     <a class="mark" href="#top">Muhammad Abdullahi</a>
     <nav class="nav" aria-label="Sections">
-      <a href="#about">About</a><a href="#research">Research</a><a href="#reading">Reading</a><a href="#humboldt">Project log</a><a href="#experience">Experience</a><a href="#publications">Publications</a><a href="#recognition">Recognition</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#research">Research</a><a href="#impact">Impact</a><a href="#reading">Reading</a><a href="#humboldt">Project log</a><a href="#experience">Experience</a><a href="#publications">Publications</a><a href="#recognition">Recognition</a><a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -325,6 +337,15 @@ footer .mono { font-family: var(--mono); }
     <div>
       <h2>Research themes</h2>
       <ul class="themes" id="themes"></ul>
+    </div>
+  </div></section>
+
+  <section id="impact" hidden><div class="wrap">
+    <p class="label">Impact</p>
+    <div>
+      <h2>From lab to application</h2>
+      <p class="reading-intro" id="impact-intro"></p>
+      <ol class="steps" id="impact-steps"></ol>
     </div>
   </div></section>
 
@@ -635,7 +656,8 @@ footer .mono { font-family: var(--mono); }
    "venue": "Molecular Ecology",
    "details": "35(4), e70272",
    "doi": "10.1111/mec.70272",
-   "status": ""
+   "status": "",
+   "plain": "Water fleas revived from dormant eggs laid in a cleaner past coped better with a common oil-derived pollutant (phenanthrene) than those from polluted decades, switching on detox genes more strongly. Past exposure to pollution does not necessarily build tolerance, which matters for predicting how wildlife responds and for choosing strains for water treatment."
   },
   {
    "year": 2024,
@@ -644,7 +666,8 @@ footer .mono { font-family: var(--mono); }
    "venue": "Environmental Pollution",
    "details": "125133",
    "doi": "10.1016/j.envpol.2024.125133",
-   "status": ""
+   "status": "",
+   "plain": "Microplastics and two forever chemicals (PFAS) together harmed Daphnia more than either did alone: development failed, growth was stunted, maturity was delayed and fewer young were born. About two in five of these combined effects were synergistic, and populations with a history of pollution coped worse. Chemicals are usually assessed one at a time, so this matters for regulation."
   },
   {
    "year": 2024,
@@ -662,7 +685,8 @@ footer .mono { font-family: var(--mono); }
    "venue": "Science of the Total Environment",
    "details": "905, 167224",
    "doi": "10.1016/j.scitotenv.2023.167224",
-   "status": ""
+   "status": "",
+   "plain": "Water fleas can act as a clean-up step at the end of wastewater treatment. We held selected Daphnia strains in containment units and showed they remove a painkiller (diclofenac), a herbicide (atrazine), arsenic and the forever chemical PFOS from treated wastewater, and ran a four-week trial with real wastewater. The approach is low in cost and carbon, and needs no added chemicals."
   },
   {
    "year": 2022,
@@ -798,7 +822,47 @@ footer .mono { font-family: var(--mono); }
   "Ecological risk assessment",
   "Teaching and supervision",
   "Science communication"
- ]
+ ],
+ "impact": {
+  "intro": "How a water flea went from a lab model to a treatment technology tested with water companies.",
+  "steps": [
+   {
+    "when": "2019 – 2023",
+    "title": "Lab discovery",
+    "text": "In my PhD at the University of Birmingham, more than 300 controlled exposures identified Daphnia strains, revived from dormant eggs, that tolerate and remove pharmaceuticals, pesticides, industrial chemicals and metals."
+   },
+   {
+    "when": "2023",
+    "title": "Proof of concept, published",
+    "text": "A four-week mesocosm trial showed Daphnia removing pharmaceuticals from real wastewater. The work was published in Science of the Total Environment and covered by The Guardian.",
+    "url": "https://doi.org/10.1016/j.scitotenv.2023.167224",
+    "linkLabel": "Read the paper"
+   },
+   {
+    "when": "2023 – 2024",
+    "title": "Pilot with a water company",
+    "text": "A prototype treating wastewater from the equivalent of eight households ran for ten months at Severn Trent's Resource Recovery and Innovation Centre, Spernal."
+   },
+   {
+    "when": "From 2023",
+    "title": "A spin-out company",
+    "text": "Daphne Water Solutions, a University of Birmingham spin-out, is taking the patented technology to market, with a commercial-scale trial planned with Umgeni Water in Durban, South Africa."
+   },
+   {
+    "when": "Jul 2026",
+    "title": "Ofwat innovation award",
+    "text": "Daphne Water Solutions won £100,000 and sector mentoring in Ofwat's Water Discovery Challenge to move from demonstration to commercial deployment.",
+    "url": "https://www.birmingham.ac.uk/news/2026/university-developed-water-technology-wins-ofwat-innovation-award",
+    "linkLabel": "University news"
+   },
+   {
+    "when": "2026 –",
+    "title": "Next: pathogens and antimicrobial resistance",
+    "text": "My Humboldt Fellowship at Goethe University Frankfurt extends the technology to bacterial and viral pathogens in reclaimed water.",
+    "current": true
+   }
+  ]
+ }
 }
 </script>
 <script>
@@ -835,7 +899,8 @@ footer .mono { font-family: var(--mono); }
   $('pubs').innerHTML = pubs.map(p => {
     const venue = p.venue ? `<p class="v"><i>${esc(p.venue)}</i>${p.details ? ', ' + esc(p.details) : ''}${p.doi ? ` · <a class="doi" href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">doi:${esc(p.doi)}</a>` : ''}</p>` : '';
     const st = p.status ? `<span class="status">${esc(p.status)}</span>` : '';
-    return `<li class="pub"><span class="yr">${p.year ?? '—'}</span><div><p class="t">${italSp(p.title)}${st}</p><p class="a">${me(p.authors)}</p>${venue}</div></li>`;
+    const plain = p.plain ? `<p class="plain"><b>In brief:</b> ${italSp(p.plain)}</p>` : '';
+    return `<li class="pub"><span class="yr">${p.year ?? '—'}</span><div><p class="t">${italSp(p.title)}${st}</p><p class="a">${me(p.authors)}</p>${venue}${plain}</div></li>`;
   }).join('');
   $('chapters').innerHTML = D.chapters.map(c => `<li class="pub"><span class="yr">${c.year ?? '—'}</span><div><p class="t">${italSp(c.title)}${c.status ? `<span class="status">${esc(c.status)}</span>` : ''}</p><p class="a">${me(c.authors)}</p>${c.venue ? `<p class="v"><i>${esc(c.venue)}</i></p>` : ''}</div></li>`).join('');
   $('early').innerHTML = italSp(D.earlyWork);
@@ -846,6 +911,14 @@ footer .mono { font-family: var(--mono); }
   $('talks').innerHTML = rows(D.talks);
   $('edu').innerHTML = rows(D.education);
   $('skills').innerHTML = D.skills.map(s => `<li>${esc(s)}</li>`).join('');
+
+  /* From lab to application: milestones in order; hidden while empty. */
+  const IMP = D.impact || {};
+  if (Array.isArray(IMP.steps) && IMP.steps.length) {
+    $('impact-intro').innerHTML = italSp(IMP.intro || '');
+    $('impact-steps').innerHTML = IMP.steps.map(s => { const u = safeUrl(s.url); return `<li${s.current ? ' class="current"' : ''}><span class="when">${esc(s.when)}</span><h3>${italSp(s.title)}</h3><p>${italSp(s.text)}${u ? ` <a href="${esc(u)}" target="_blank" rel="noopener">${esc(s.linkLabel || 'More')}</a>` : ''}</p></li>`; }).join('');
+    $('impact').hidden = false;
+  }
 
   /* Science I'm reading: hand-picked items, newest first; the section stays hidden while the list is empty. */
   const reading = (Array.isArray(D.reading) ? D.reading : []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
